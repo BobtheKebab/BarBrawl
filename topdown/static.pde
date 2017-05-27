@@ -1,4 +1,4 @@
-static class BasicObject {
+class BasicObject {
   
   float xPos;
   float yPos;
@@ -9,20 +9,36 @@ static class BasicObject {
    this.yPos = inY;
   }
   
-  /*void drawObject() {
+  void drawObject() {
     rect(xPos, yPos, 100, 100);
     
-  }*/
-  
+  }
 }
 
-static class DynamicObject extends BasicObject {
+class DynamicObject extends BasicObject {
+  
+  DynamicCollider myCollider = new DynamicCollider(100,100);
+  
   
   float xVelocity;
   float yVelocity;
   
   DynamicObject(float x, float y) {
     super(x, y);
+  }
+  
+  void move() {
+    
+    myCollider.xPos = this.xPos;
+    myCollider.yPos = this.yPos;
+    myCollider.xVelocity = xVelocity;
+    myCollider.yVelocity = yVelocity;
+    xVelocity = myCollider.toTravelX(wall);
+    yVelocity = myCollider.toTravelY(wall);
+    
+   xPos += xVelocity;
+   yPos += yVelocity;
+    
   }
   
 }
