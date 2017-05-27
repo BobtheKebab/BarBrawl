@@ -4,17 +4,17 @@ class World {
     walls = new ArrayList<Wall>();
   }
   
-  int whatsThere(float x, float y) {
+  int whatsThere(Location l) {
     for(Wall w : walls) {
-      if(intersects(w.xPos, w.yPos, w.wide, w.high)) {
+      if(intersects(w.xPos, w.yPos, w.wide, w.high, l)) {
         return 1;
       }
     }
     return 0;
   }
   
-  boolean intersects(int x, int y, int w, int h) {
-    return false;
+  boolean intersects(int x, int y, int w, int h, Location l) {
+    return (l.x >= x && l.x <= x+w && l.y >= y && l.y <= y+h);
   }
   
   void add(Wall w) {
