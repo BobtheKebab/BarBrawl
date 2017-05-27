@@ -1,4 +1,4 @@
-class BasicObject {
+static class BasicObject {
   
   float xPos;
   float yPos;
@@ -9,10 +9,10 @@ class BasicObject {
    this.yPos = inY;
   }
   
-  void drawObject() {
+  /*void drawObject() {
     rect(xPos, yPos, 100, 100);
     
-  }
+  }*/
   
 }
 

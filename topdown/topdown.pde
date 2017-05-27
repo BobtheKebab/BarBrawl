@@ -1,4 +1,5 @@
 BasicObject myObject;
+Player p;
 
 
 void setup() {
@@ -7,20 +8,21 @@ void setup() {
   
  background(color(0,0,0));
  myObject = new BasicObject(20.0,20.0);
+ p = new Player(10, 10);
   
 }
 
 void draw() {
   clear();
-  
-  myObject.drawObject();
+  p.drawObject();
+  //myObject.drawObject();
   
 }
 
 void keyPressed() {
   
   if (key == 'd') {
-    myObject.xPos += 5;
+    p.xPos += 5;
   }
   
 }
