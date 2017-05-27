@@ -20,6 +20,12 @@ class World {
   void add(Wall w) {
     walls.add(w);
   }
+  
+  void render() {
+    for(Wall w: walls) {
+      w.drawObject();
+    }
+  }
 }
 
 class Wall extends BasicObject {

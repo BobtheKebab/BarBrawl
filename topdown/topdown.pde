@@ -1,21 +1,25 @@
 BasicObject myObject;
 Player p;
 float left, right, up, down;
+World world;
 
 
 void setup() {
   
   size(500, 500);
   
- background(color(0,0,0));
- myObject = new BasicObject(20.0,20.0);
- p = new Player(10, 10);
+  background(color(0,0,0));
+  myObject = new BasicObject(20.0,20.0);
+  p = new Player(10, 10);
+  world = new World();
+  world.add(new Wall(20, 50, 100, 100));
   
 }
 
 void draw() {
   clear();
   healthBar();
+  world.render();
   p.drawObject();
   move();
   
