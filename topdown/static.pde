@@ -1,10 +1,10 @@
-class basicObject {
+class BasicObject {
   
   float xPos;
   float yPos;
   
   
-  basicObject(float inX, float inY) {
+  BasicObject(float inX, float inY) {
    this.xPos = inX;
    this.yPos = inY;
   }
@@ -16,9 +16,13 @@ class basicObject {
   
 }
 
-class dynamicObject extends basicObject {
+class DynamicObject extends BasicObject {
   
   float xVelocity;
   float yVelocity;
+  
+  DynamicObject(float x, float y) {
+    super(x, y);
+  }
   
 }

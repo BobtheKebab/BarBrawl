@@ -1,4 +1,4 @@
-class collider {
+class Collider {
   
   float xPos;
   float yPos;

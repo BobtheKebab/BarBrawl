@@ -1,4 +1,4 @@
-basicObject myObject;
+BasicObject myObject;
 
 
 void setup() {
@@ -6,7 +6,7 @@ void setup() {
   size(512,512);
   
  background(color(0,0,0));
- myObject = new basicObject(20.0,20.0);
+ myObject = new BasicObject(20.0,20.0);
   
 }
 
