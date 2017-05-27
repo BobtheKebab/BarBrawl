@@ -15,6 +15,22 @@ void setup() {
 void draw() {
   clear();
   p.drawObject();
+  
+  if (keyPressed) {
+    if (key == 'w') {
+       p.yPos -= 1;
+    }
+    if (key == 'a') {
+       p.xPos -= 1; 
+    }
+    if (key == 's') {
+       p.yPos += 1;
+    }
+    if (key == 'd') {
+       p.xPos += 1;
+    }
+   
+  }
   //myObject.drawObject();
   
 }
