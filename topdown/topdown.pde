@@ -5,7 +5,7 @@ float left, right, up, down;
 
 void setup() {
   
-  size(512,512);
+  size(500, 500);
   
  background(color(0,0,0));
  myObject = new BasicObject(20.0,20.0);
@@ -15,6 +15,7 @@ void setup() {
 
 void draw() {
   clear();
+  healthBar();
   p.drawObject();
   move();
   
@@ -22,7 +23,17 @@ void draw() {
   
 }
 
+void healthBar() {
+ fill(255, 255, 0); // Yellow external bar
+ rect(0, 430, 500, 70);
+ fill(255, 0, 0); // Red internal bar
+ rect(10, 440, p.health * 48, 50);
+}
+
 void keyPressed() {
+  if (key == 'k') {
+    p.health -= 1; 
+  }
   if (key == 'w') {
     up = 1;
   }
@@ -39,7 +50,7 @@ void keyPressed() {
 }
 
 void keyReleased() {
-    if (key == 'w') {
+  if (key == 'w') {
     up = 0;
   }
   if (key == 'a') {
