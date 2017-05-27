@@ -5,6 +5,10 @@ public class Location {
 	      x = _x;
 	      y = _y;
     }
+    
+    public Location(float _x, float _y) {
+        this((int)_x, (int)_y);
+    }
 
     public boolean equals(Location l) {
 	      return l.x == x && l.y == y;

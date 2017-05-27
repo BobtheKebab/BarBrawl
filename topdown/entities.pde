@@ -48,6 +48,6 @@ class Enemy extends Entity {
   void update() {
     PriorityQueue pq = new PriorityQueue();
     int toPlayer = (int)(Math.abs(xPos - p.xPos) + Math.abs(yPos - p.yPos));
-    pq.add(new Node(new Location(xPos, yPos), null, 0, toPlayer, true);
+    pq.add(new Node(new Location(xPos, yPos), null, 0, toPlayer, true));
   }
 }
