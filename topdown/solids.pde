@@ -13,7 +13,7 @@ class World {
     return 0;
   }
   
-  boolean intersects(int x, int y, int w, int h, Location l) {
+  boolean intersects(float x, float y, float w, float h, Location l) {
     return (l.x >= x && l.x <= x+w && l.y >= y && l.y <= y+h);
   }
   
