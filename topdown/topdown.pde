@@ -69,8 +69,8 @@ void keyReleased() {
 }
 
 void move() {
- p.yPos -= up;
- p.yPos += down;
- p.xPos -= left;
- p.xPos += right;
+ p.yPos = max(p.yPos - up, 0);
+ p.yPos = min(p.yPos + down, 420);
+ p.xPos = max(p.xPos - left, 0);
+ p.xPos = min(p.xPos + right, 490);
 }
