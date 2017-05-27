@@ -28,6 +28,7 @@ class World {
   }
 }
 
+
 class Wall extends BasicObject {
   float wide, high;
   

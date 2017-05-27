@@ -1,5 +1,6 @@
 BasicObject myObject;
 Player p;
+Enemy e;
 float left, right, up, down;
 World world;
 
@@ -8,9 +9,10 @@ void setup() {
   
   size(500, 500);
   
-  background(color(0,0,0));
+  background(139, 69, 19);
   myObject = new BasicObject(20.0,20.0);
-  p = new Player(10, 10);
+  p = new Player(250, 250);
+  e = new Enemy(300, 300);
   world = new World();
   world.add(new Wall(20, 50, 100, 100));
   
@@ -21,6 +23,7 @@ void draw() {
   healthBar();
   world.render();
   p.drawObject();
+  e.drawObject();
   move();
   
   //myObject.drawObject();

@@ -12,6 +12,7 @@ abstract class Entity extends DynamicObject {
   abstract void drawObject();
 }
 
+
 class Player extends Entity {
   public Player(float x, float y) {
     super(x, y);
@@ -26,10 +27,11 @@ class Player extends Entity {
   void update() {}
   
   void drawObject() {
-    fill(255,0,0);
-    rect(xPos, yPos, 10, 10);
+    fill(0, 0, 255);
+    ellipse(xPos, yPos, 10, 10);
   }
 }
+
 
 class Enemy extends Entity {
   Enemy(float x, float y) {
@@ -41,8 +43,8 @@ class Enemy extends Entity {
   }
   
   void drawObject() {
-    fill(255, 0, 255);
-    ellipse(xPos, yPos, 10, 10);
+    fill(255, 0, 0);
+    rect(xPos, yPos, 10, 10);
   }
   
   void update() {
