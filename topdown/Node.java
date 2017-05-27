@@ -30,4 +30,8 @@ public class Node implements Comparable<Node> {
     }
 
     public Node getPrevious() {return previous;}
+    
+    public int distanceTo(Node n) {
+        return loc.distanceTo(n.loc);
+    }
 }
