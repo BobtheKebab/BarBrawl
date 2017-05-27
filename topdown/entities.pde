@@ -36,6 +36,8 @@ class Player extends Entity {
 class Enemy extends Entity {
   Enemy(float x, float y) {
     super(x, y);
+    xVelocity = 0.5;
+    yVelocity = 0.5;
   }
   
   void getHit(float damage) {
@@ -50,6 +52,11 @@ class Enemy extends Entity {
   void update() {
     PriorityQueue pq = new PriorityQueue();
     int toPlayer = (int)(Math.abs(xPos - p.xPos) + Math.abs(yPos - p.yPos));
+    /*Node(Location, prev Node, distTraveled, distLeft, astar?)*/
     pq.add(new Node(new Location(xPos, yPos), null, 0, toPlayer, true));
+    if(xPos < p.xPos) xPos += xVelocity;
+    else if(xPos > p.xPos) xPos -= xVelocity;
+    if(yPos < p.yPos) yPos += yVelocity;
+    else if(yPos > p.yPos) yPos -= yVelocity;
   }
 }

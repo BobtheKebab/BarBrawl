@@ -17,4 +17,11 @@ public class Location {
     public int distanceTo(Location l) {
         return (int)(Math.abs(l.x - x) + Math.abs(l.y - y));
     }
+    
+    /**
+    0: north, 1:NE, 2: east, 3:SE, 4: south, 5:SW, 6: west, 7:NW
+    */
+    public Location getNeighbor(int dir) {
+      return null;
+    }
 }

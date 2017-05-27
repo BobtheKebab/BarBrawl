@@ -21,6 +21,7 @@ void setup() {
 void draw() {
   clear();
   healthBar();
+  e.update();
   world.render();
   p.drawObject();
   e.drawObject();
