@@ -16,6 +16,10 @@ class World {
   boolean intersects(int x, int y, int w, int h) {
     return false;
   }
+  
+  void add(Wall w) {
+    walls.add(w);
+  }
 }
 
 class Wall extends BasicObject {
