@@ -8,25 +8,25 @@ public class Node implements Comparable<Node> {
     private boolean astar;
 
     public Node(Location l, Node prev, int s, int g, boolean _astar) {
-	loc = l;
-	previous = prev;
-	distToStart = s;
-	distToGoal  = g;
-	astar = _astar;
+	      loc = l;
+	      previous = prev;
+	      distToStart = s;
+	      distToGoal  = g;
+	      astar = _astar;
     }
 
     public int compareTo(Node other) {
-	if(astar)
-	    return (distToStart+distToGoal) - (other.distToStart+other.distToGoal);
-	return distToGoal - other.distToGoal;
+	      if(astar)
+	          return (distToStart+distToGoal) - (other.distToStart+other.distToGoal);
+	      return distToGoal - other.distToGoal;
     }
 
     public int distTraveled() {
-	return distToStart;
+	      return distToStart;
     }
 
     public String toString() {
-	return "("+loc.row()+", "+loc.col()+")";
+	      return "("+loc.x+", "+loc.y+")";
     }
 
     public Node getPrevious() {return previous;}

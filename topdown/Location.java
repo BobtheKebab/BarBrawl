@@ -1,15 +1,12 @@
 public class Location {
-    private int row, col;
+    public int x, y;
 
-    public Location(int r, int c) {
-	row = r;
-	col = c;
+    public Location(int _x, int _y) {
+	      x = _x;
+	      y = _y;
     }
 
-    public int row() {return row;}
-    public int col() {return col;}
-
     public boolean equals(Location l) {
-	return l.row == row && l.col == col;
+	      return l.x == x && l.y == y;
     }
 }
