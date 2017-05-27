@@ -30,3 +30,22 @@ class Player extends Entity {
     rect(xPos, yPos, 10, 10);
   }
 }
+
+class Enemy extends Entity {
+  Enemy(float x, float y) {
+    super(x, y);
+  }
+  
+  void getHit(float damage) {
+    health -= damage;
+  }
+  
+  void drawObject() {
+    fill(255, 0, 255);
+    ellipse(xPos, yPos, 10, 10);
+  }
+  
+  void update() {
+    
+  }
+}
