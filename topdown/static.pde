@@ -16,7 +16,7 @@ class BasicObject {
   
 }
 
-class DynamicObject extends BasicObject {
+static class DynamicObject extends BasicObject {
   
   float xVelocity;
   float yVelocity;
