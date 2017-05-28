@@ -1,7 +1,9 @@
 class World {
   ArrayList<Wall> walls;
+  ArrayList<Entity> entities;
   World() {
     walls = new ArrayList<Wall>();
+    entities = new ArrayList<Entity>();
   }
   
   /**
@@ -20,13 +22,40 @@ class World {
     return (l.x >= x && l.x <= x+w && l.y >= y && l.y <= y+h);
   }
   
+  void hitAllAround(Entity target) {
+    ArrayList<Entity> hit = new ArrayList<Entity>();
+    for(Entity e : entities) {
+      if(dist(e.xPos, e.yPos, target.xPos, target.yPos) < bomb_radius) {
+        e.getHit(5);
+      }
+    }
+    for(int i = 0; i < entities.size();) {
+      if(!entities.get(i).isAlive()) {
+        entities.remove(i);
+      }
+      else i++;
+    }
+  }
+  
   void add(Wall w) {
     walls.add(w);
+  }
+  void add(Entity e) {
+    entities.add(e);
+  }
+  
+  void update() {
+    for(Entity e : entities) {
+      e.update();
+    }
   }
   
   void render() {
     for(Wall w: walls) {
       w.drawObject();
+    }
+    for(Entity e : entities) {
+      e.drawObject();
     }
   }
 }

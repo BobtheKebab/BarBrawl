@@ -51,6 +51,7 @@ class Player extends Entity {
       rect(xPos + ary[0], yPos + ary[1], 10, 10);
     }
     rectMode(CORNER);
+    world.hitAllAround(this);
   }
   
 }
@@ -73,10 +74,14 @@ class Enemy extends Entity {
   }
   
   void update() {
-    if(xPos < p.xPos) xPos += xVelocity;
-    else if(xPos > p.xPos) xPos -= xVelocity;
-    if(yPos < p.yPos) yPos += yVelocity;
-    else if(yPos > p.yPos) yPos -= yVelocity;
+    if(xPos < p.xPos && world.whatsThere(new Location(xPos+xVelocity, yPos)) != 1) 
+      xPos += xVelocity;
+    else if(xPos > p.xPos && world.whatsThere(new Location(xPos-xVelocity, yPos)) != 1) 
+      xPos -= xVelocity;
+    if(yPos < p.yPos && world.whatsThere(new Location(xPos, yPos+yVelocity)) != 1) 
+      yPos += yVelocity;
+    else if(yPos > p.yPos && world.whatsThere(new Location(xPos, yPos-yVelocity)) != 1) 
+      yPos -= yVelocity;
   }
 }
 

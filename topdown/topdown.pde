@@ -2,7 +2,7 @@ BasicObject myObject;
 BasicObject wall;
 Player p;
 Enemy e;
-float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430;
+float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430, bomb_radius = 15;
 World world;
 
 
@@ -13,18 +13,18 @@ void setup() {
   background(139, 69, 19);
   myObject = new BasicObject(20.0,20.0);
   p = new Player(100, 100);
-  e = new Follower(300, 300);
   world = new World();
   world.add(new Wall(20, 50, 100, 100));
+  world.add(new Follower(300, 300));
+  world.add(new Enemy(200, 200));
 }
 
 void draw() {
   clear();
   gui();
-  e.update();
+  world.update();
   world.render();
   p.drawObject();
-  e.drawObject();
   move();
   atkDelay++;
 }
