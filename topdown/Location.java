@@ -18,6 +18,10 @@ public class Location {
         return (int)(Math.abs(l.x - x) + Math.abs(l.y - y));
     }
     
+    public String toString() {
+      return "("+x+","+y+")";
+    }
+    
     /**
     0: north, 1:NE, 2: east, 3:SE, 4: south, 5:SW, 6: west, 7:NW
     */

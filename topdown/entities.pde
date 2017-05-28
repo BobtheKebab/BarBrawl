@@ -89,22 +89,27 @@ class Follower extends Enemy {
     PriorityQueue pq = new PriorityQueue();
     int toPlayer = (int)(Math.abs(xPos - p.xPos) + Math.abs(yPos - p.yPos));
     /*Node(Location, prev Node, distTraveled, distLeft, astar?)*/
-    Node here = new Node(new Location(xPos, yPos), null, 0, toPlayer, true);
-    pq.add(here);
+    Node start = new Node(new Location(xPos, yPos), null, 0, toPlayer, true);
+    pq.add(start);
     while(pq.hasNext() && times > 0) {
-      here = pq.next();
-      xPos = here.loc.x;
-      yPos = here.loc.y;
+      Node here = pq.next();
+      //println((here.loc.x-xPos)+" "+(here.loc.y-yPos));
       for(Node n : here.getNeighbors(new Location(p.xPos, p.yPos))) {
         if(world.whatsThere(n.loc) == 0) { //if its empty
+          //println((n.loc.x-xPos)+" "+(n.loc.y-yPos));
           pq.add(n);
         }
       }
-      times--;
+      if(pq.hasNext()) {
+        here = pq.next();
+        xPos = here.loc.x;
+        yPos = here.loc.y;
+        times--;
+      }
     }
   }
   
   void update() {
-    move(1);
+    move(2);
   }
 }

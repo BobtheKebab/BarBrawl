@@ -12,8 +12,8 @@ void setup() {
   
   background(139, 69, 19);
   myObject = new BasicObject(20.0,20.0);
-  p = new Player(250, 250);
-  e = new Enemy(300, 300);
+  p = new Player(100, 100);
+  e = new Follower(300, 300);
   world = new World();
   world.add(new Wall(20, 50, 100, 100));
 }
