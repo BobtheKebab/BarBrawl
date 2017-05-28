@@ -62,12 +62,13 @@ void gui() {
 
 void spawn() {
   if(frameCount % Math.floor(spawn_freq) == 0) {
-    float randX = 0;
-    float randY = 0;
-    while ( get the dist from player ) {
+    float randX = random(500);
+    float randY = random(400) + 30;
+    while (dist(randX, randY, p.xPos, p.yPos) < 50) {
       randX = random(500);
       randY = random(400) + 30;
-    world.add(new Enemy(0, 0));
+    }
+    world.add(new Enemy(randX, randY));
   }
 }
 
