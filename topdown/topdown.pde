@@ -205,4 +205,5 @@ void restart() {
   spawn_freq = 180;
   highScore = score;
   score = 0;
+  add_score = 1;
 }
