@@ -36,11 +36,14 @@ class Player extends Entity {
     if(millis() - lastHitTime >= cooldownThreshold) {
       health -= damage;
       lastHitTime = millis();
-      println(health);
     }
   }
   
-  void update() {}
+  void update() {
+    if(!isAlive()) {
+      state = "end";
+    }
+  }
   
   void drawObject() {
     fill(0, 0, 255);

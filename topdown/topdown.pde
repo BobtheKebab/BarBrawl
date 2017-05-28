@@ -6,8 +6,10 @@ World world;
 float left, right, up, down; // Movement
 float atkDelay, atkThreshold = 150, atk_radius = 25, atk_power = 7; // Attack
 float spawn_freq = 180; // Spawn
-float score = 0, add_score = 1; // Score
+int score = 0;
+float add_score = 1; // Score
 float temp = 430; // Kill shortcut
+String state;
 
 
 void setup() {
@@ -18,21 +20,35 @@ void setup() {
   myObject = new BasicObject(20.0,20.0);
   p = new Player(100, 100);
   world = new World();
-  world.add(new Wall(20, 50, 100, 100));
-  world.add(new Follower(300, 300));
+  world.add(new Wall(50, 50, 20, height-150));
+  world.add(new Wall(width-50, 50, 20, height-150));
+  //world.add(new Follower(300, 300));
   world.add(new Enemy(200, 200));
-  
+  state = "play";
 }
 
 void draw() {
-  background(105, 105, 105);
-  gui();
-  move();
-  world.update();
-  world.render();
-  p.drawObject();
-  spawn();
-  atkDelay++;
+  if(state.equals("play")) {
+    background(105, 105, 105);
+    gui();
+    move();
+    world.update();
+    p.update();
+    world.render();
+    p.drawObject();
+    spawn();
+    atkDelay++;
+  }
+  else if(state.equals("end")) {
+    background(map(sin(millis()*PI/720), -1, 1, 85, 125), 105, 105);
+    fill(255);
+    textAlign(CENTER);
+    textSize(36);
+    text("GAME OVER", width/2, height/3);
+    textSize(20);
+    text("PRESS R TO RESTART", width/2, height/2);
+    if(keyPressed && (key == 'r' || key == 'R')) restart();
+  }
 }
 
 void gui() {
@@ -41,7 +57,7 @@ void gui() {
  fill(255, 255, 255);
  textAlign(CENTER);
  textSize(20);
- text("" + Math.floor(score), 250, 30);
+ text("" + score, width/2, 30);
  
  // Enclosing bar
  fill(255, 255, 0);
@@ -117,4 +133,12 @@ void move() {
  p.yPos = min(p.yPos + down, 420);
  p.xPos = max(p.xPos - left, 0);
  p.xPos = min(p.xPos + right, 490);
+}
+
+void restart() {
+  p = new Player(width/2, height/2);
+  world = new World();
+  world.add(new Wall(100, 100, width-200, 30));
+  world.add(new Wall(100, height-200, width-200, 30));
+  state = "play";
 }
