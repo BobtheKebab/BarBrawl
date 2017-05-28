@@ -14,6 +14,13 @@ abstract class Entity extends DynamicObject {
 
 
 class Player extends Entity {
+  
+  PImage img = loadImage("Player.png");
+  float[][] moves = { {10, 0} , {-10, 0},
+                      {10, 10} , {-10, 10},
+                      {0, 10} , {0, -10},
+                      {-10, -10} , {10, -10} };
+  
   public Player(float x, float y) {
     super(x, y);
     yVelocity = 0;
@@ -28,8 +35,24 @@ class Player extends Entity {
   
   void drawObject() {
     fill(0, 0, 255);
+    //pushMatrix();
+    //translate(xPos, yPos);
+    //rotate(HALF_PI);
+    //image(img, xPos, yPos, 20, 20);
+    //popMatrix();
     ellipse(xPos, yPos, 10, 10);
   }
+  
+  void attack () {
+    rectMode(CENTER);
+    fill(0, 0, 255);
+     rect(xPos, yPos, 10, 10);
+    for (float[] ary : moves) {
+      rect(xPos + ary[0], yPos + ary[1], 10, 10);
+    }
+    rectMode(CORNER);
+  }
+  
 }
 
 

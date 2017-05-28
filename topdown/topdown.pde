@@ -2,7 +2,7 @@ BasicObject myObject;
 BasicObject wall;
 Player p;
 Enemy e;
-float left, right, up, down;
+float left, right, up, down, atkDelay;
 World world;
 
 
@@ -26,7 +26,7 @@ void draw() {
   p.drawObject();
   e.drawObject();
   move();
-  
+  atkDelay++;
 }
 
 void healthBar() {
@@ -39,6 +39,10 @@ void healthBar() {
 void keyPressed() {
   if (key == 'k') {
     p.health -= 1; 
+  }
+  if (key == 'b' && atkDelay > 200) {
+   atkDelay = 0;
+   p.attack(); 
   }
   if (key == 'w') {
     up = 1;
