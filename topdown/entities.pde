@@ -9,7 +9,7 @@ abstract class Entity extends DynamicObject {
   
   abstract void getHit(float damage);
   
-  // abstract void drawObject();
+  abstract void drawObject();
 }
 
 
