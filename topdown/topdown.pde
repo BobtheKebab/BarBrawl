@@ -2,7 +2,7 @@ BasicObject myObject;
 BasicObject wall;
 Player p;
 Enemy e;
-float left, right, up, down, atkDelay, atkThreshold = 150;
+float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430;
 World world;
 
 
@@ -33,18 +33,20 @@ void gui() {
  fill(255, 255, 0); // Yellow external bar
  rect(0, 430, 500, 70);
  fill(255, 0, 0); // Red internal bar
- rect(10, 440, p.health * 48, 50);
+ rect(60, 440, p.health * 43, 50);
  if (atkDelay > atkThreshold) {
    fill(0, 0, 255);
  } else {
    fill(0, 0, 0);
  }
- ellipse(50, 430, 30, 30);
+ ellipse(30, 465, 40, 40);
 }
 
 void keyPressed() {
-  if (key == 'k') {
+  if (key == 'k' && temp > 0) {
     p.health -= 1; 
+    temp -= 43;
+    System.out.println(temp);
   }
   if (key == 'b' && atkDelay > atkThreshold) {
    atkDelay = 0;
