@@ -50,6 +50,9 @@ class World {
   void update() {
     for(Entity e : entities) {
       e.update();
+      if(dist(e.xPos, e.yPos, p.xPos, p.yPos) < 5) {
+        p.getHit(1);
+      }
     }
   }
   

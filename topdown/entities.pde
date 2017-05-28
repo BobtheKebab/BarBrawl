@@ -20,6 +20,7 @@ class Player extends Entity {
                       {10, 10} , {-10, 10},
                       {0, 10} , {0, -10},
                       {-10, -10} , {10, -10} };
+  int lastHitTime, cooldownThreshold;
   
   public Player(float x, float y) {
     super(x, y);
@@ -27,9 +28,17 @@ class Player extends Entity {
     xVelocity = 0;
     health = 10.0;
     power = 1.0;
+    lastHitTime = 900;
+    cooldownThreshold = 900;
   }
   
-  void getHit(float damage) {}
+  void getHit(float damage) {
+    if(millis() - lastHitTime >= cooldownThreshold) {
+      health -= damage;
+      lastHitTime = millis();
+      println(health);
+    }
+  }
   
   void update() {}
   

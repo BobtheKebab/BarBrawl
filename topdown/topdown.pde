@@ -25,7 +25,7 @@ void setup() {
 }
 
 void draw() {
-  clear();
+  background(105, 105, 105);
   gui();
   move();
   world.update();
