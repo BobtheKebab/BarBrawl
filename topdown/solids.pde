@@ -35,6 +35,10 @@ class World {
         score += add_score;
         add_score *= 1.025;
         spawn_freq *= 0.985;
+        if (score % shopThreshold == 0) {
+         state = "shop";
+         shopThreshold *= 1.4;
+        }
       }
       else i++;
     }

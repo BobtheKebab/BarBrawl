@@ -3,14 +3,14 @@ BasicObject wall;
 Player p;
 Enemy e;
 World world;
-float left, right, up, down; // Movement
+float left, right, up, down, speed = 1; // Movement
 float atkDelay, atkThreshold = 150, atk_radius = 25, atk_power = 7; // Attack
 float spawn_freq = 180; // Spawn
-int score = 0;
+int score = 0, highScore = 0;
 float add_score = 1; // Score
 float temp = 430; // Kill shortcut
+float shopThreshold = 25; // Shop
 String state;
-
 
 void setup() {
   
@@ -69,8 +69,14 @@ void gui() {
  // Score
  fill(255, 255, 255);
  textAlign(CENTER);
- textSize(20);
+ textSize(30);
  text("" + score, width/2, 30);
+ 
+ // Highscore
+ textSize(10);
+ text("Highest", 40, 15);
+ textSize(15);
+ text("" + highScore, 40, 30);
  
  // Enclosing bar
  fill(20, 100, 120);
@@ -102,26 +108,44 @@ void spawn() {
 }
 
 void keyPressed() {
-  if (key == 'k' && temp > 0) {
-    p.health -= 1; 
-    temp -= 43;
-    System.out.println(temp);
+  if (key == 'k') {
+    if (state == "shop") {
+      state = "play";
+    } else { 
+      state = "shop";
+    }
+  }
+  if (key == '1' && state == "shop") {
+    speed += .1;
+    state = "play";
+  }
+  if (key == '2' && state == "shop") {
+    atk_radius += 5;
+    state = "play";
+  }
+  if (key == '3' && state == "shop") {
+    atkThreshold -= 15;
+    state = "play";
+  }
+  if (key == '4' && state == "shop") {
+    atk_power += 2;
+    state = "play";
   }
   if (key == 'b' && atkDelay > atkThreshold) {
    atkDelay = 0;
    p.attack(); 
   }
   if (key == 'w') {
-    up = 1;
+    up = speed;
   }
   if (key == 'a') {
-    left = 1; 
+    left = speed; 
   }
   if (key == 's') {
-    down = 1;
+    down = speed;
   }
   if (key == 'd') {
-    right = 1;
+    right = speed;
   }
   
 }
@@ -155,4 +179,6 @@ void restart() {
   world.add(new Wall(100, height-200, width-200, 30));
   state = "play";
   spawn_freq = 180;
+  highScore = score;
+  score = 0;
 }
