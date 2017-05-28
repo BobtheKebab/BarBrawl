@@ -44,6 +44,8 @@ void draw() {
     textSize(30);
     fill(255, 255, 255);
     text("Press R to Play", width / 2, 400);
+    textSize(18);
+    text("Use WASD to move and B to explode", width/2, height/2);
   }
   if(state.equals("play")) {
     background(105, 105, 105);
