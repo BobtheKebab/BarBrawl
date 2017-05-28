@@ -34,4 +34,13 @@ public class Node implements Comparable<Node> {
     public int distanceTo(Node n) {
         return loc.distanceTo(n.loc);
     }
+    
+    public Node[] getNeighbors(Location goal) {
+        Node[] ns = new Node[8];
+        for(int i = 0; i < 8; i++) {
+            Location l = loc.getNeighbor(i);
+            ns[i] = new Node(loc.getNeighbor(i), this, distTraveled()+1, l.distanceTo(goal), astar);
+        }
+        return ns;
+    }
 }
