@@ -25,13 +25,15 @@ class World {
   void hitAllAround(Entity target) {
     ArrayList<Entity> hit = new ArrayList<Entity>();
     for(Entity e : entities) {
-      if(dist(e.xPos, e.yPos, target.xPos, target.yPos) < bomb_radius) {
-        e.getHit(bomb_power);
+      if(dist(e.xPos, e.yPos, target.xPos, target.yPos) < atk_radius) {
+        e.getHit(atk_power);
       }
     }
     for(int i = 0; i < entities.size();) {
       if(!entities.get(i).isAlive()) {
         entities.remove(i);
+        score += add_score;
+        add_score *= 1.025;
       }
       else i++;
     }

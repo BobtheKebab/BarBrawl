@@ -35,22 +35,21 @@ class Player extends Entity {
   
   void drawObject() {
     fill(0, 0, 255);
+    ellipse(xPos, yPos, 10, 10);
+    /*
     pushMatrix();
     translate(xPos, yPos);
     rotate(atan2(mouseY - yPos, mouseX - xPos));
     imageMode(CENTER);
     image(img, 0, 0, 20, 20);
     popMatrix();
+    */
   }
   
   void attack () {
-    rectMode(CENTER);
-    fill(0, 0, 255);
-     rect(xPos, yPos, 10, 10);
-    for (float[] ary : moves) {
-      rect(xPos + ary[0], yPos + ary[1], 10, 10);
-    }
-    rectMode(CORNER);
+    //rectMode(CENTER);
+    fill(255, 255, 255);
+     ellipse(xPos, yPos, 25, 25);
     world.hitAllAround(this);
   }
   

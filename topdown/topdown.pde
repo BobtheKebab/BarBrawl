@@ -2,8 +2,12 @@ BasicObject myObject;
 BasicObject wall;
 Player p;
 Enemy e;
-float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430, bomb_radius = 15, bomb_power = 3;
 World world;
+float left, right, up, down; // Movement
+float atkDelay, atkThreshold = 150, atk_radius = 25, atk_power = 7; // Attack
+float spawn_freq = 180; // Spawn
+float score = 0, add_score = 1; // Score
+float temp = 430; // Kill shortcut
 
 
 void setup() {
@@ -31,12 +35,24 @@ void draw() {
 }
 
 void gui() {
- fill(255, 255, 0); // Yellow external bar
+  
+ // Score
+ fill(255, 255, 255);
+ textAlign(CENTER);
+ textSize(20);
+ text("" + Math.floor(score), 250, 30);
+ 
+ // Enclosing bar
+ fill(255, 255, 0);
  rect(0, 430, 500, 70);
- fill(255, 0, 0); // Red internal bar
+ 
+ // Health bar
+ fill(255, 0, 0);
  rect(60, 440, p.health * 43, 50);
+ 
+ // Attack cooldown
  if (atkDelay > atkThreshold) {
-   fill(0, 0, 255);
+   fill(255, 255, 255);
  } else {
    fill(0, 0, 0);
  }
@@ -44,7 +60,7 @@ void gui() {
 }
 
 void spawn() {
-  if(frameCount % 60 == 0) {
+  if(frameCount % spawn_freq == 0) {
     world.add(new Enemy(0, 0));
   }
 }
