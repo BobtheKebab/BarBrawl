@@ -49,6 +49,19 @@ void draw() {
     text("PRESS R TO RESTART", width/2, height/2);
     if(keyPressed && (key == 'r' || key == 'R')) restart();
   }
+  else if(state.equals("shop")) {
+    background(150);
+    fill(255);
+    textAlign(CENTER);
+    textSize(36);
+    text("SHOP", width/2, height/8);
+    textSize(18);
+    textAlign(LEFT);
+    fill(60, 150, 60);
+    rect(50, height/3, width-100, 50);
+    fill(0);
+    text("1) Faster", 80, height/3+25);
+  }
 }
 
 void gui() {
