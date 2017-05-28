@@ -73,13 +73,38 @@ class Enemy extends Entity {
   }
   
   void update() {
-    PriorityQueue pq = new PriorityQueue();
-    int toPlayer = (int)(Math.abs(xPos - p.xPos) + Math.abs(yPos - p.yPos));
-    /*Node(Location, prev Node, distTraveled, distLeft, astar?)*/
-    pq.add(new Node(new Location(xPos, yPos), null, 0, toPlayer, true));
     if(xPos < p.xPos) xPos += xVelocity;
     else if(xPos > p.xPos) xPos -= xVelocity;
     if(yPos < p.yPos) yPos += yVelocity;
     else if(yPos > p.yPos) yPos -= yVelocity;
+  }
+}
+
+class Follower extends Enemy {
+  Follower(float x, float y) {
+    super(x, y);
+  }
+  
+  void move(int times) {
+    PriorityQueue pq = new PriorityQueue();
+    int toPlayer = (int)(Math.abs(xPos - p.xPos) + Math.abs(yPos - p.yPos));
+    /*Node(Location, prev Node, distTraveled, distLeft, astar?)*/
+    Node here = new Node(new Location(xPos, yPos), null, 0, toPlayer, true);
+    pq.add(here);
+    while(pq.hasNext() && times > 0) {
+      here = pq.next();
+      xPos = here.loc.x;
+      yPos = here.loc.y;
+      for(Node n : here.getNeighbors(new Location(p.xPos, p.yPos))) {
+        if(world.whatsThere(n.loc) == 0) { //if its empty
+          pq.add(n);
+        }
+      }
+      times--;
+    }
+  }
+  
+  void update() {
+    move(1);
   }
 }
