@@ -11,7 +11,7 @@ class World {
   */
   int whatsThere(Location l) {
     for(Wall w : walls) {
-      if(intersects(w.xPos, w.yPos, w.wide, w.high, l)) {
+      if(intersects(w.xPos, w.yPos, w.wide, w.high, l) && millis()%5000 > 1000) {
         return 1;
       }
     }
@@ -77,7 +77,7 @@ class Wall extends BasicObject {
   }
   
   void drawObject() {
-    fill(128, 128, 0);
+    fill(128, 128, 0, map(millis()%5000, 0, 4999, 0, 255));
     rect(xPos, yPos, wide, high);
   }
 }

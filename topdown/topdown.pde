@@ -60,12 +60,12 @@ void gui() {
  text("" + score, width/2, 30);
  
  // Enclosing bar
- fill(255, 255, 0);
+ fill(20, 100, 120);
  rect(0, 430, 500, 70);
  
  // Health bar
- fill(255, 0, 0);
- rect(60, 440, p.health * 43, 50);
+ fill(40, 190, 230);
+ rect(60, 440, p.health * 43, 50, 20);
  
  // Attack cooldown
  if (atkDelay > atkThreshold) {
@@ -141,4 +141,5 @@ void restart() {
   world.add(new Wall(100, 100, width-200, 30));
   world.add(new Wall(100, height-200, width-200, 30));
   state = "play";
+  spawn_freq = 180;
 }
