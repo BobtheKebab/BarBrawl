@@ -53,14 +53,16 @@ void draw() {
     background(150);
     fill(255);
     textAlign(CENTER);
-    textSize(36);
+    textSize(44);
     text("SHOP", width/2, height/8);
-    textSize(18);
+    textSize(30);
+    text("Choose your upgrade", width / 2, height /8 + 65);
+    textSize(26);
     textAlign(LEFT);
-    fill(60, 150, 60);
-    rect(50, height/3, width-100, 50);
-    fill(0);
-    text("1) Faster", 80, height/3+25);
+    text("1) Move Speed", 30, height/3+25);
+    text("3) Attack Range", 30, 2 * height / 3 + 25);
+    text("2) Attack Speed", width - 230, height / 3 + 25);
+    text("3) Damage", width - 230, 2 * height / 3 + 25);
   }
 }
 
@@ -108,6 +110,9 @@ void spawn() {
 }
 
 void keyPressed() {
+  if (key == 'p') {
+   state = "shop"; 
+  }
   if (key == 'k') {
     if (state == "shop") {
       state = "play";
