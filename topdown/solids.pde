@@ -4,6 +4,9 @@ class World {
     walls = new ArrayList<Wall>();
   }
   
+  /**
+  0:air, 1:wall
+  */
   int whatsThere(Location l) {
     for(Wall w : walls) {
       if(intersects(w.xPos, w.yPos, w.wide, w.high, l)) {

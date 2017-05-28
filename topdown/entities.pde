@@ -35,12 +35,12 @@ class Player extends Entity {
   
   void drawObject() {
     fill(0, 0, 255);
-    //pushMatrix();
-    //translate(xPos, yPos);
-    //rotate(HALF_PI);
-    //image(img, xPos, yPos, 20, 20);
-    //popMatrix();
-    ellipse(xPos, yPos, 10, 10);
+    pushMatrix();
+    translate(xPos, yPos);
+    rotate(atan2(mouseY - yPos, mouseX - xPos));
+    imageMode(CENTER);
+    image(img, 0, 0, 20, 20);
+    popMatrix();
   }
   
   void attack () {
