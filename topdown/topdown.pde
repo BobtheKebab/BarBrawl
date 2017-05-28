@@ -60,9 +60,9 @@ void draw() {
     textSize(26);
     textAlign(LEFT);
     text("1) Move Speed", 30, height/3+25);
-    text("3) Attack Range", 30, 2 * height / 3 + 25);
-    text("2) Attack Speed", width - 230, height / 3 + 25);
-    text("3) Damage", width - 230, 2 * height / 3 + 25);
+    text("3) Attack Speed", 30, 2 * height / 3 + 25);
+    text("2) Attack Range", width - 230, height / 3 + 25);
+    text("4) Damage", width - 230, 2 * height / 3 + 25);
   }
 }
 
@@ -111,9 +111,6 @@ void spawn() {
 
 void keyPressed() {
   if (key == 'p') {
-   state = "shop"; 
-  }
-  if (key == 'k') {
     if (state == "shop") {
       state = "play";
     } else { 
