@@ -24,10 +24,27 @@ void setup() {
   world.add(new Wall(width-50, 50, 20, height-150));
   //world.add(new Follower(300, 300));
   world.add(new Enemy(200, 200));
-  state = "play";
+  state = "start";
 }
 
 void draw() {
+  if (state.equals("start")) {
+    background(map(sin(millis()*PI/720), -1, 1, 85, 125), 105, 105);
+    textAlign(LEFT);
+    textSize(44);
+    fill(0, 0, 255);
+    text("CIRCLES", 10, 50);
+    textAlign(CENTER);
+    fill(255, 255, 255);
+    text("AND", width / 2 - 10, 100);
+    textAlign(RIGHT);
+    fill(255, 0, 0);
+    text("SQUARES", width - 10, 150);
+    textAlign(CENTER);
+    textSize(30);
+    fill(255, 255, 255);
+    text("Press R to Play", width / 2, 400);
+  }
   if(state.equals("play")) {
     background(105, 105, 105);
     gui();
@@ -110,6 +127,9 @@ void spawn() {
 }
 
 void keyPressed() {
+  if (key == 'r' && state == "start") {
+   state = "play";
+  }
   if (key == 'p') {
     if (state == "shop") {
       state = "play";

@@ -37,7 +37,7 @@ class World {
         spawn_freq *= 0.985;
         if (score % shopThreshold == 0) {
          state = "shop";
-         shopThreshold *= 1.4;
+         shopThreshold *= 1.5;
         }
       }
       else i++;
