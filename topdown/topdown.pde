@@ -1,4 +1,5 @@
 BasicObject myObject;
+BasicObject wall;
 Player p;
 Enemy e;
 float left, right, up, down;
@@ -7,6 +8,7 @@ World world;
 
 void setup() {
   
+//<<<<<<< HEAD
   size(500, 500);
   
   background(139, 69, 19);
@@ -16,10 +18,21 @@ void setup() {
   world = new World();
   world.add(new Wall(20, 50, 100, 100));
   
+/*=======
+  size(1000,512);
+  
+ background(color(0,0,0));
+ myObject = new DynamicObject(200,400);
+ myObject.yVelocity = -2.6;
+ myObject.xVelocity = -.5;
+ wall = new BasicObject(220,20);
+ // p = new Player(10, 10);
+>>>>>>> 475d53d493d54c477bca59896b62d95c8584e852*/
 }
 
 void draw() {
   clear();
+//<<<<<<< HEAD
   healthBar();
   e.update();
   world.render();
@@ -28,6 +41,28 @@ void draw() {
   move();
   
   //myObject.drawObject();
+/*=======
+//  p.drawObject();
+//  
+//  if (keyPressed) {
+//    if (key == 'w') {
+//       p.yPos -= 1;
+//    }
+//    if (key == 'a') {
+//       p.xPos -= 1; 
+//    }
+//    if (key == 's') {
+//       p.yPos += 1;
+//    }
+//    if (key == 'd') {
+//       p.xPos += 1;
+//    }
+   
+//  }
+  myObject.drawObject();
+  wall.drawObject();
+  myObject.move();
+>>>>>>> 475d53d493d54c477bca59896b62d95c8584e852*/
   
 }
 
@@ -56,6 +91,7 @@ void keyPressed() {
   }
   
 }
+//<<<<<<< HEAD
 
 void keyReleased() {
   if (key == 'w') {
@@ -78,3 +114,5 @@ void move() {
  p.xPos = max(p.xPos - left, 0);
  p.xPos = min(p.xPos + right, 490);
 }
+//=======
+//>>>>>>> 475d53d493d54c477bca59896b62d95c8584e852

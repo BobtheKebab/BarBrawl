@@ -9,7 +9,7 @@ abstract class Entity extends DynamicObject {
   
   abstract void getHit(float damage);
   
-  abstract void drawObject();
+  // abstract void drawObject();
 }
 
 
@@ -26,6 +26,7 @@ class Player extends Entity {
   
   void update() {}
   
+//<<<<<<< HEAD
   void drawObject() {
     fill(0, 0, 255);
     ellipse(xPos, yPos, 10, 10);
@@ -60,3 +61,10 @@ class Enemy extends Entity {
     else if(yPos > p.yPos) yPos -= yVelocity;
   }
 }
+/*=======
+//  void drawObject() {
+//    fill(255,0,0);
+//    rect(xPos, yPos, 10, 10);
+//  }
+}
+>>>>>>> 475d53d493d54c477bca59896b62d95c8584e852*/
