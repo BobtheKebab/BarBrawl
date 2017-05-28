@@ -26,7 +26,7 @@ class World {
     ArrayList<Entity> hit = new ArrayList<Entity>();
     for(Entity e : entities) {
       if(dist(e.xPos, e.yPos, target.xPos, target.yPos) < bomb_radius) {
-        e.getHit(5);
+        e.getHit(bomb_power);
       }
     }
     for(int i = 0; i < entities.size();) {

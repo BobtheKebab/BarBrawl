@@ -2,7 +2,7 @@ BasicObject myObject;
 BasicObject wall;
 Player p;
 Enemy e;
-float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430, bomb_radius = 15;
+float left, right, up, down, atkDelay, atkThreshold = 150, temp = 430, bomb_radius = 15, bomb_power = 3;
 World world;
 
 
@@ -22,10 +22,11 @@ void setup() {
 void draw() {
   clear();
   gui();
+  move();
   world.update();
   world.render();
   p.drawObject();
-  move();
+  spawn();
   atkDelay++;
 }
 
@@ -40,6 +41,12 @@ void gui() {
    fill(0, 0, 0);
  }
  ellipse(30, 465, 40, 40);
+}
+
+void spawn() {
+  if(frameCount % 60 == 0) {
+    world.add(new Enemy(0, 0));
+  }
 }
 
 void keyPressed() {

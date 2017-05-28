@@ -60,6 +60,7 @@ class Player extends Entity {
 class Enemy extends Entity {
   Enemy(float x, float y) {
     super(x, y);
+    health = 5;
     xVelocity = 0.5;
     yVelocity = 0.5;
   }
@@ -69,8 +70,10 @@ class Enemy extends Entity {
   }
   
   void drawObject() {
+    rectMode(CENTER);
     fill(255, 0, 0);
     rect(xPos, yPos, 10, 10);
+    rectMode(CORNER);
   }
   
   void update() {
@@ -115,6 +118,13 @@ class Follower extends Enemy {
   }
   
   void update() {
-    move(2);
+    move(1);
+  }
+  
+  void drawObject() {
+    fill(255, 0, 255);
+    rectMode(CENTER);
+    rect(xPos, yPos, 10, 10);
+    rectMode(CORNER);
   }
 }
