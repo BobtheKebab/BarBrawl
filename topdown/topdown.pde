@@ -14,13 +14,14 @@ void setup() {
   
   size(500, 500);
   
-  background(139, 69, 19);
+  background(105, 105, 105);
   myObject = new BasicObject(20.0,20.0);
   p = new Player(100, 100);
   world = new World();
   world.add(new Wall(20, 50, 100, 100));
   world.add(new Follower(300, 300));
   world.add(new Enemy(200, 200));
+  
 }
 
 void draw() {
@@ -60,7 +61,12 @@ void gui() {
 }
 
 void spawn() {
-  if(frameCount % spawn_freq == 0) {
+  if(frameCount % Math.floor(spawn_freq) == 0) {
+    float randX = 0;
+    float randY = 0;
+    while ( get the dist from player ) {
+      randX = random(500);
+      randY = random(400) + 30;
     world.add(new Enemy(0, 0));
   }
 }

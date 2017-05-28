@@ -49,7 +49,7 @@ class Player extends Entity {
   void attack () {
     //rectMode(CENTER);
     fill(255, 255, 255);
-     ellipse(xPos, yPos, 25, 25);
+    ellipse(xPos, yPos, 25, 25);
     world.hitAllAround(this);
   }
   

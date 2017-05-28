@@ -34,6 +34,7 @@ class World {
         entities.remove(i);
         score += add_score;
         add_score *= 1.025;
+        spawn_freq *= 0.985;
       }
       else i++;
     }
